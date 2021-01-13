@@ -1,2 +1,1 @@
-# oc-quota
-Enforcing resource consumption limits using OpenShift ResourceQuota
+# Enforcing resource consumption limits using OpenShift ResourceQuota
