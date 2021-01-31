@@ -99,5 +99,10 @@ As you can notice, when defining the quota got CPU and memory you are defining m
 ![image](https://user-images.githubusercontent.com/36239840/106389845-095f8f80-63ff-11eb-93d6-325469edbfca.png)
 ![image](https://user-images.githubusercontent.com/36239840/106389890-4166d280-63ff-11eb-8024-025cc95c7ba7.png)
 
+This ResourceQuota places these requirements on the quota-demo namespace: Every Container must have a memory request, memory limit, cpu request, and cpu limit. 
+- The memory request total for all Containers must not exceed 1 GiB. 
+- The memory limit total for all Containers must not exceed 2 GiB.
+- The CPU request total for all Containers must not exceed 1 core. 
+- The CPU limit total for all Containers must not exceed 2 cores.
 ## Verify that the CPU and Memory Quotas work
 ## Summary
