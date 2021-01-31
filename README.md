@@ -133,5 +133,29 @@ spec:
 - On the web console, if you go back to the resource quota, you will notice that the Nginx Pod’s CPU and Memory requests and limits are correctly accounted for against the ResourceQuota.
 ![image](https://user-images.githubusercontent.com/36239840/106390279-082f6200-6401-11eb-83cc-33496b634321.png)
 ![image](https://user-images.githubusercontent.com/36239840/106390287-12516080-6401-11eb-8ce9-040be9d51594.png)
+- Now, try to exceed the quota by creating a new application using redis docker image. The yaml defitnition includes the following details. Keep in mind that it will exceed the quota, therefore the application won't be created.
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-app
+spec:
+  containers:
+  - name: quota-mem-cpu-demo-2-ctr
+    image: redis
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "800m"
+      requests:
+        memory: "700Mi"
+        cpu: "400m"
+```
+- Use the following command to create the application
+```
+oc apply -f https://raw.githubusercontent.com/nerdingitout/oc-quota/main/redis-app.yaml
+```
+- You will notice the following error and that's because the application exceeded the quota.
+![image](https://user-images.githubusercontent.com/36239840/106390512-3b262580-6402-11eb-90bc-2617cda77f37.png)
 
 ## Summary
