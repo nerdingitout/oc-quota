@@ -70,7 +70,34 @@ oc create deployment myguestbookv2 --image=ibmcom/guestbook:v2 -n quota-demo
 ![image](https://user-images.githubusercontent.com/36239840/106388869-db2b8100-63f9-11eb-82a4-b1a54011c9d9.png)
 - If you scroll all the way down, you will notice the conditions section which shows that the pod has failed because the quota has been exceeded.
 ![failed pod](https://user-images.githubusercontent.com/36239840/106388947-2ba2de80-63fa-11eb-9b77-1c6db42271eb.JPG)
-
+- Before moving to the next step, make sure to delete all resources and the resource quota you created in this step. You can delete the resource quota from the web console. Use the following commands to delete all resources for 'myguestbook' and 'myguestbookv2' deployments.
+```
+oc delete all --selector app=myguestbook
+oc delete all --selector app=myguestbookv2
+```
+![delete all](https://user-images.githubusercontent.com/36239840/106389819-d9b08780-63fe-11eb-87a0-90d5df2ecbbb.JPG)
 ## Configure Memory and CPU for a Namespace
+- Create a new ResourceQuota for memory and CPU using the following ```oc apply``` command.
+```
+oc apply -f https://raw.githubusercontent.com/nerdingitout/oc-quota/main/quota-mem-cpu.yaml
+```
+![image](https://user-images.githubusercontent.com/36239840/106389379-660d7b00-63fc-11eb-8b8b-8e5c5103214b.png)
+- The YAML file contains the following details for the quota
+```
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mem-cpu-demo
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi
+```
+As you can notice, when defining the quota got CPU and memory you are defining minimum (requests) and maximum (limits) resources to be used. Once created, you can view the resource quota on the web console. The following screenshot shows that the resources haven't been used yet.
+![image](https://user-images.githubusercontent.com/36239840/106389845-095f8f80-63ff-11eb-93d6-325469edbfca.png)
+![image](https://user-images.githubusercontent.com/36239840/106389890-4166d280-63ff-11eb-8024-025cc95c7ba7.png)
+
 ## Verify that the CPU and Memory Quotas work
 ## Summary
