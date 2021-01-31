@@ -157,5 +157,25 @@ oc apply -f https://raw.githubusercontent.com/nerdingitout/oc-quota/main/redis-a
 ```
 - You will notice the following error and that's because the application exceeded the quota.
 ![image](https://user-images.githubusercontent.com/36239840/106390512-3b262580-6402-11eb-90bc-2617cda77f37.png)
+- You can increase the resource quota to fit in the new application. Go to the YAML definition of the 'mem-cpu-demo' resource quota and edit it under the spec section (between lines 65 and  71) as shown below and then save your changes.
+![image](https://user-images.githubusercontent.com/36239840/106390761-5fcecd00-6403-11eb-8521-105abff0aeb2.png)
+```
+spec:
+  hard:
+    limits.cpu: '4'
+    limits.memory: 4Gi
+    requests.cpu: '1'
+    requests.memory: 2Gi
+```
+- Attempt to create the same redis application again, it will be created successfully.
+```
+oc apply -f https://raw.githubusercontent.com/nerdingitout/oc-quota/main/redis-app.yaml
+```
+![image](https://user-images.githubusercontent.com/36239840/106390780-7ecd5f00-6403-11eb-994a-32e49fefcec1.png)
+- If you use ```oc get pods``` you will see that the new applciation has been created successfully.
+![image](https://user-images.githubusercontent.com/36239840/106390869-ebe0f480-6403-11eb-9621-82f169bea672.png)
+- If you go back to the 'mem-cpu-demo' details page, you will notice that it has changed and now the consumed resources are counted for both applications
+![image](https://user-images.githubusercontent.com/36239840/106390818-b76d3880-6403-11eb-9bf8-db3d9d7af3bd.png)
+![image](https://user-images.githubusercontent.com/36239840/106390856-d66bca80-6403-11eb-8d26-616ff6e98f39.png)
 
 ## Summary
