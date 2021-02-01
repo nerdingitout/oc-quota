@@ -128,7 +128,7 @@ spec:
         memory: "600Mi"
         cpu: "400m"
 ```
-- Since the reuqests and limits for the CPU and memory are within the quota, the pod should be created successfully.
+- Since the requests and limits for the CPU and memory are within the quota, the pod should be created successfully.
 ![image](https://user-images.githubusercontent.com/36239840/106390264-ee8e1a80-6400-11eb-8311-a4a7dacf5e3c.png)
 - On the web console, if you go back to the resource quota, you will notice that the Nginx Pod’s CPU and Memory requests and limits are correctly accounted for against the ResourceQuota.
 ![image](https://user-images.githubusercontent.com/36239840/106390279-082f6200-6401-11eb-83cc-33496b634321.png)
