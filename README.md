@@ -8,8 +8,8 @@ A resource quota is enforced on a project or pod/container when there is Resourc
 
 ## Prerequisites
 For this tutorial you will need:
-- Red Hat OpenShift Cluster 4.3 on IBM Cloud.
-- oc CLI (can be downloaded from this link or you can use it at http://shell.cloud.ibm.com/.
+- Red Hat OpenShift Cluster 4.3 or higher on IBM Cloud.
+- oc CLI (can be downloaded from this <a href="https://mirror.openshift.com/pub/openshift-v4/clients/oc/4.3/">link</a> or you can use it at <a href="http://shell.cloud.ibm.com/">http://shell.cloud.ibm.com/.<br>
 ## Estimated Time
 It will take you around 30 minutes to complete this tutorial.
 ## Steps
