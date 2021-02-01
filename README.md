@@ -179,3 +179,4 @@ oc apply -f https://raw.githubusercontent.com/nerdingitout/oc-quota/main/redis-a
 ![image](https://user-images.githubusercontent.com/36239840/106390856-d66bca80-6403-11eb-8d26-616ff6e98f39.png)
 
 ## Summary
+In this tutorial, you learned what is a resource quota and how to create resource quotas for namespaces and pods. With resource quota you can control CPU usage, memory usgae, number of pods, replication controllers, services, secrets and presistent volume claims. You performed several tasks to control resources and saw changes in the project and pods and learned what happens when you exceed the resource quota and how to change it.
